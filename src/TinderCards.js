@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TinderCard from 'react-tinder-card';
-import instance from './axios';
+import axios from './axios';
 import './TinderCards.css'
 
 function TinderCards() {
@@ -11,7 +11,8 @@ function TinderCards() {
         //common pattern for async await functions
         async function fetchData() {
             //our baseurl is already set in axios.js
-            let req = await instance.get('/tinder/cards')
+            let req = await axios.get('/tinder/cards')
+            console.log(req)
             setPeople(req.data)
         }
         fetchData()
@@ -36,7 +37,7 @@ function TinderCards() {
                         onSwipe={(dir) => swiped(dir, person.name)}
                         onCardLeftScreen={() => outOfFrame(person.name)}
                     >
-                        <div style={{ backgroundImage: `url(${person.url})` }} className="card">
+                        <div style={{ backgroundImage: `url(${person.imgUrl})` }} className="card">
 							<h3>{person.name}</h3>
 						</div>
                     </TinderCard>
