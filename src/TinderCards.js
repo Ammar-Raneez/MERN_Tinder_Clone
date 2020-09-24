@@ -11,7 +11,7 @@ function TinderCards() {
         //common pattern for async await functions
         async function fetchData() {
             //our baseurl is already set in axios.js
-            const req = await instance.get('/tinder/cards')
+            let req = await instance.get('/tinder/cards')
             setPeople(req.data)
         }
         fetchData()
